@@ -1,122 +1,303 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js" data-theme="auto">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <title>Phyo Arkar Soe – Portfolio & Resume</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Professional portfolio and resume of Phyo Arkar Soe. Software engineering experience, projects, skills, and contact information." />
+  <meta name="keywords" content="Phyo Arkar Soe, Software Engineer, Portfolio, Resume, Developer" />
+  <meta name="author" content="Phyo Arkar Soe" />
+  <link rel="canonical" href="https://www.example.com/" />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Phyo Arkar Soe – Portfolio" />
+  <meta property="og:description" content="Portfolio, experience and projects of Phyo Arkar Soe." />
+  <meta property="og:url" content="https://www.example.com/" />
+  <meta property="og:image" content="https://www.example.com/assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preload" href="assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    document.documentElement.classList.remove('no-js');
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Phyo Arkar Soe",
+    "email":"mailto:phyoarkarsoee@gmail.com",
+    "jobTitle":"<INSERT PROFESSIONAL TITLE>",
+    "url":"https://www.example.com/",
+    "sameAs":[
+      "https://www.linkedin.com/in/<your-handle>",
+      "https://github.com/<your-github>"
+    ],
+    "image":"https://www.example.com/assets/profile.jpg",
+    "description":"<ONE SENTENCE PROFESSIONAL SUMMARY>",
+    "knowsAbout":["<Skill A>","<Skill B>","<Domain Expertise>"]
+  }
+  </script>
 </head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="sidebar-toggle">
-                <i class="fa fa-bars"></i>
-            </div>
-            <div class="logo">
-                <i class="fa fa-home"></i> SmartHome
-            </div>
-            <nav>
-                <ul>
-                    <li class="active" data-tab="home">
-                        <a href="#"><i class="fa fa-tachometer-alt"></i> Home Dashboard</a>
-                    </li>
-                    <li data-tab="devices">
-                        <a href="#"><i class="fa fa-lightbulb"></i> Devices</a>
-                    </li>
-                    <li data-tab="settings">
-                        <a href="#"><i class="fa fa-cog"></i> Settings</a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="user-profile">
-                <i class="fa fa-user-circle"></i> Arkar-Soe
-            </div>
-        </aside>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <main class="content">
-            <section id="home" class="tab-content active">
-                <h2>Home Dashboard</h2>
-                <div class="dashboard-grid">
-                    <div class="widget">
-                        <h3>Lights</h3>
-                        <div class="device">
-                            <h4>Living Room</h4>
-                            <label class="switch">
-                                <input type="checkbox" id="livingRoomLights">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="device">
-                            <h4>Kitchen</h4>
-                            <label class="switch">
-                                <input type="checkbox" id="kitchenLights">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="widget">
-                        <h3>Temperature</h3>
-                        <div class="temperature-display">
-                            <p>Current: <span id="currentTemp">22°C</span></p>
-                            <input type="range" min="15" max="30" value="22" id="tempControl">
-                        </div>
-                    </div>
-
-                    <div class="widget">
-                        <h3>Security</h3>
-                        <div class="security-status">
-                            <h4>Front Door</h4>
-                            <p id="frontDoorStatus">Locked</p>
-                            <button id="toggleLock">Unlock</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="devices" class="tab-content">
-                <h2>Devices</h2>
-                <div class="add-device-section">
-                    <h3>Add New Device</h3>
-                    <input type="text" placeholder="Device Name">
-                    <select>
-                        <option>Light</option>
-                        <option>Sensor</option>
-                        <option>Thermostat</option>
-                        <option>Camera</option>
-                    </select>
-                    <button>Add Device</button>
-                </div>
-                <div class="device-list">
-                    <h3>My Devices</h3>
-                    <ul>
-                        <li>Living Room Lights</li>
-                        <li>Kitchen Lights</li>
-                        <li>Temperature Sensor</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="settings" class="tab-content">
-                <h2>Settings</h2>
-                <div class="settings-section">
-                    <h3>Account Settings</h3>
-                    <p>Change your password, update your profile information.</p>
-                    <button>Edit Profile</button>
-                </div>
-                <div class="settings-section">
-                    <h3>Notifications</h3>
-                    <p>Manage your notification preferences.</p>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </section>
-        </main>
+  <header class="site-header" role="banner">
+    <div class="container flex-between wrap gap-m">
+      <div class="brand">
+        <a href="#top" class="brand__link" aria-label="Home">
+          <span class="brand__logo" aria-hidden="true">PA</span>
+          <span class="brand__name">Phyo Arkar Soe</span>
+        </a>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__burger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <ul id="nav-menu" class="nav__menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact" class="btn btn--primary btn--sm">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+              <span class="theme-toggle__icon" data-theme-icon></span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script src="script.js"></script>
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero container">
+      <div class="hero__content">
+        <h1 class="hero__title">
+          Hi, I'm <span class="accent">Phyo Arkar Soe</span><br />
+          <span class="hero__subtitle"><INSERT PROFESSIONAL TITLE / BRAND STATEMENT></span>
+        </h1>
+        <p class="lead">
+          <INSERT SHORT VALUE SUMMARY: e.g. “Software Engineer specializing in scalable web platforms, cloud-native architectures, and delightful user experiences.”>
+        </p>
+        <div class="hero__actions">
+          <a href="#projects" class="btn btn--primary">View Projects</a>
+          <a href="assets/Phyo_Arkar_Soe_Resume.pdf" class="btn btn--outline" download>Download Resume</a>
+        </div>
+      </div>
+      <figure class="hero__media">
+        <img src="assets/profile.jpg" alt="Portrait of Phyo Arkar Soe" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container grid cols-2 gap-xl">
+        <div>
+          <h2 class="section__title">About</h2>
+          <p><INSERT DETAILED PROFESSIONAL SUMMARY (3–5 sentences) covering domain expertise, impact, uniqueness>.</p>
+          <ul class="key-metrics">
+            <li><span class="metric__value"><span data-counter="X+">X+</span></span><span class="metric__label">Years Experience</span></li>
+            <li><span class="metric__value"><span data-counter="Y">Y</span></span><span class="metric__label">Projects Delivered</span></li>
+            <li><span class="metric__value"><span data-counter="Z%">Z%</span></span><span class="metric__label">Performance Gains</span></li>
+          </ul>
+        </div>
+        <div class="about__highlights">
+          <h3>Core Highlights</h3>
+            <ul class="check-list">
+              <li><strong>Scalability:</strong> <INSERT highlight></li>
+              <li><strong>Performance:</strong> <INSERT highlight></li>
+              <li><strong>Leadership:</strong> <INSERT highlight></li>
+              <li><strong>Quality:</strong> <INSERT highlight></li>
+            </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section alt">
+      <div class="container">
+        <h2 class="section__title">Experience</h2>
+        <div class="timeline" aria-label="Work Experience">
+          <!-- Repeat for each role -->
+          <article class="timeline__item">
+            <div class="timeline__marker" aria-hidden="true"></div>
+            <div class="timeline__content card">
+              <header>
+                <h3 class="job__title"><ROLE TITLE> – <span class="job__org"><COMPANY NAME></span></h3>
+                <p class="job__meta"><time datetime="2022-01">Jan 2022</time> – <time datetime="2024-12">Present</time> · <span class="job__location">Remote</span></p>
+              </header>
+              <ul class="bullets">
+                <li>Delivered <RESULT / METRIC> by <ACTION / TECHNIQUE>.</li>
+                <li>Optimized <SYSTEM / FEATURE> reducing <COST/TIME> by <XX%>.</li>
+                <li>Led <N> engineers in <INITIATIVE> improving <KPI>.</li>
+              </ul>
+              <p class="tags">
+                <span class="tag">TypeScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">AWS</span>
+              </p>
+            </div>
+          </article>
+          <!-- Add more items -->
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section__title">Selected Projects</h2>
+        <div class="projects-grid">
+          <article class="project card">
+            <div class="project__head">
+              <h3 class="project__title"><Project Name></h3>
+              <span class="project__year">2024</span>
+            </div>
+            <p class="project__desc">Short impact statement: what problem, what value, what tech.</p>
+            <ul class="project__bullets">
+              <li>Achieved <metric> via <approach>.</li>
+              <li>Integrated <service/tool> to <benefit>.</li>
+            </ul>
+            <p class="tags">
+              <span class="tag">React</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">PostgreSQL</span>
+            </p>
+            <div class="project__links">
+              <a href="<LIVE URL>" class="link-inline" target="_blank" rel="noopener">Live Demo</a>
+              <a href="<REPO URL>" class="link-inline" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+          <!-- Add more project cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section alt">
+      <div class="container">
+        <h2 class="section__title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <ul class="tags-list">
+              <li class="tag">JavaScript</li>
+              <li class="tag">TypeScript</li>
+              <li class="tag">Python</li>
+              <li class="tag">Go</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Frameworks</h3>
+            <ul class="tags-list">
+              <li class="tag">React</li>
+              <li class="tag">Next.js</li>
+              <li class="tag">Node.js</li>
+              <li class="tag">Express</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Cloud & DevOps</h3>
+            <ul class="tags-list">
+              <li class="tag">AWS</li>
+              <li class="tag">Docker</li>
+              <li class="tag">CI/CD</li>
+              <li class="tag">Terraform</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Other</h3>
+            <ul class="tags-list">
+              <li class="tag">System Design</li>
+              <li class="tag">Agile</li>
+              <li class="tag">Testing</li>
+              <li class="tag">Performance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section__title">Education & Certifications</h2>
+        <div class="edu-list">
+          <article class="edu-item card">
+            <h3><Degree / Program></h3>
+            <p class="edu-item__meta"><Institution>, <time datetime="2021">2021</time></p>
+            <p><Relevant coursework or achievements.</p>
+          </article>
+          <article class="edu-item card">
+            <h3><Certification Name></h3>
+            <p class="edu-item__meta"><Issuing Org> · <time datetime="2024-06">Jun 2024</time></p>
+            <p>Scope / relevance.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section alt">
+      <div class="container">
+        <h2 class="section__title">Get In Touch</h2>
+        <p class="lead">Have a question, collaboration, or opportunity? Let’s connect.</p>
+        <div class="contact-grid">
+          <div class="contact-card card">
+            <h3>Email</h3>
+            <p><a href="mailto:phyoarkarsoee@gmail.com">phyoarkarsoee@gmail.com</a></p>
+          </div>
+          <div class="contact-card card">
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/<your-handle>" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+          </div>
+          <div class="contact-card card">
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/<your-github>" target="_blank" rel="noopener">GitHub Repos</a></p>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <label for="name">Name<span aria-hidden="true">*</span></label>
+            <input id="name" name="name" required autocomplete="name" />
+            <span class="error" data-error-for="name"></span>
+          </div>
+            <div class="form-row">
+            <label for="email">Email<span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+            <span class="error" data-error-for="email"></span>
+          </div>
+          <div class="form-row">
+            <label for="message">Message<span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" required rows="5"></textarea>
+            <span class="error" data-error-for="message"></span>
+          </div>
+          <button class="btn btn--primary" type="submit">Send Message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container flex-between wrap gap-m">
+      <p>&copy; <span id="year"></span> Phyo Arkar Soe. All rights reserved.</p>
+      <ul class="social">
+        <li><a href="https://github.com/<your-github>" aria-label="GitHub"><span class="icon">GH</span></a></li>
+        <li><a href="https://www.linkedin.com/in/<your-handle>" aria-label="LinkedIn"><span class="icon">IN</span></a></li>
+        <li><a href="mailto:phyoarkarsoee@gmail.com" aria-label="Email"><span class="icon">@</span></a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <button class="to-top" aria-label="Scroll to top">
+    ↑
+  </button>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

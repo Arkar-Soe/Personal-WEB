@@ -1,90 +1,118 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Sidebar toggle
-    const sidebar = document.querySelector('.sidebar');
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const container = document.querySelector('.container');
+// Theme handling
+const root = document.documentElement;
+const toggle = document.getElementById('themeToggle');
+const navToggle = document.querySelector('.nav__toggle');
+const navMenu = document.getElementById('nav-menu');
+const toTop = document.querySelector('.to-top');
+const counters = document.querySelectorAll('[data-counter]');
+const yearEl = document.getElementById('year');
 
-    console.log("sidebar:", sidebar); // ADDED
-    console.log("sidebarToggle:", sidebarToggle); // ADDED
-    console.log("container:", container); // ADDED
+yearEl.textContent = new Date().getFullYear();
 
-    if (sidebarToggle) { // ADDED - Check if sidebarToggle exists
-        sidebarToggle.addEventListener('click', function() {
-            console.log("Sidebar toggle clicked!"); // ADDED
-            sidebar.classList.toggle('open');
-            container.classList.toggle('open');
-        });
-    } else {
-        console.error("Sidebar toggle element not found!"); // ADDED
+function currentThemeSetting() {
+  return localStorage.getItem('theme-pref') || 'auto';
+}
+function applyTheme(value) {
+  root.setAttribute('data-theme', value);
+  localStorage.setItem('theme-pref', value);
+}
+function cycleTheme() {
+  const order = ['auto','light','dark'];
+  const cur = currentThemeSetting();
+  const idx = order.indexOf(cur);
+  applyTheme(order[(idx + 1) % order.length]);
+  updateThemeIcon();
+}
+function updateThemeIcon() {
+  if (!toggle) return;
+  const cur = currentThemeSetting();
+  const icon = toggle.querySelector('[data-theme-icon]');
+  if (cur === 'dark') icon.textContent = '🌚';
+  else if (cur === 'light') icon.textContent = '🌞';
+  else icon.textContent = '🌗';
+}
+applyTheme(currentThemeSetting());
+updateThemeIcon();
+toggle?.addEventListener('click', cycleTheme);
+
+// Mobile nav
+navToggle?.addEventListener('click', () => {
+  const open = navMenu.classList.toggle('is-open');
+  navToggle.setAttribute('aria-expanded', open);
+});
+
+// Scroll to top button
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 700) {
+    toTop.classList.add('is-visible');
+  } else {
+    toTop.classList.remove('is-visible');
+  }
+});
+toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// Intersection observer for counters
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.counter.replace(/\D/g,''),10);
+      animateCount(el, target);
+      el.classList.add('in');
+      io.unobserve(el);
     }
+  });
+},{threshold:.35});
+counters.forEach(c => io.observe(c));
 
-    // Tab functionality
-    const tabs = document.querySelectorAll('.sidebar nav ul li');
-    const tabContents = document.querySelectorAll('.tab-content');
+function animateCount(el, target) {
+  if (!Number.isFinite(target)) { el.textContent = el.dataset.counter; return; }
+  let start = 0;
+  const dur = 1200;
+  const step = timestamp => {
+    if (!el._start) el._start = timestamp;
+    const progress = Math.min((timestamp - el._start)/dur,1);
+    el.textContent = Math.floor(progress * target) + el.dataset.counter.replace(/[0-9]/g,'');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs and tab contents
-            tabs.forEach(t => t.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
+// Contact form (client-side demo only)
+document.getElementById('contactForm')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const status = form.querySelector('.form-status');
+  let valid = true;
+  ['name','email','message'].forEach(id => {
+    const field = form.querySelector('#' + id);
+    const err = form.querySelector(`[data-error-for="${id}"]`);
+    if (!field.value.trim() || (id==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(field.value))) {
+      valid = false;
+      err.textContent = 'Required';
+    } else {
+      err.textContent = '';
+    }
+  });
+  if (!valid) return;
+  status.textContent = 'Sending...';
+  setTimeout(() => {
+    status.textContent = 'Message sent (demo). Integrate a backend or service like Formspree.';
+    form.reset();
+  }, 1200);
+});
 
-            // Add active class to clicked tab and corresponding content
-            this.classList.add('active');
-            const tabId = this.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
-
-            // Close sidebar after selecting a tab (on mobile)
-            if (window.innerWidth <= 768) {
-                sidebar.classList.remove('open');
-                container.classList.remove('open');
-            }
-        });
-    });
-
-    // Lights
-    const livingRoomLights = document.getElementById('livingRoomLights');
-    const kitchenLights = document.getElementById('kitchenLights');
-
-    livingRoomLights.addEventListener('change', function() {
-        console.log('Living room lights toggled: ' + this.checked);
-        // Add logic to control lights here (e.g., send request to a smart home API)
-    });
-
-    kitchenLights.addEventListener('change', function() {
-        console.log('Kitchen lights toggled: ' + this.checked);
-        // Add logic to control lights here
-    });
-
-    // Temperature
-    const tempControl = document.getElementById('tempControl');
-    const currentTempDisplay = document.getElementById('currentTemp');
-
-    tempControl.addEventListener('input', function() {
-        // Smooth transition using CSS
-        currentTempDisplay.style.transition = 'all 0.3s ease'; // Add transition
-        currentTempDisplay.textContent = this.value + '°C';
-        console.log('Temperature set to: ' + this.value + '°C');
-    });
-
-    // Remove transition after it's done to avoid conflicts
-    currentTempDisplay.addEventListener('transitionend', function() {
-        currentTempDisplay.style.transition = 'none';
-    });
-
-    // Security
-    const toggleLock = document.getElementById('toggleLock');
-    const frontDoorStatus = document.getElementById('frontDoorStatus');
-    let isLocked = true;
-
-    toggleLock.addEventListener('click', function() {
-        isLocked = !isLocked;
-        frontDoorStatus.textContent = isLocked ? 'Locked' : 'Unlocked';
-        toggleLock.textContent = isLocked ? 'Unlock' : 'Lock';
-        console.log('Front door is now: ' + (isLocked ? 'locked' : 'unlocked'));
-        // Add logic to control door lock here
-    });
-
-    // Set "Home" tab as default active tab
-    document.querySelector('.sidebar nav ul li[data-tab="home"]').classList.add('active');
-    document.getElementById('home').classList.add('active');
+// Smooth anchor offset (optional, ensure header offset)
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',evt=>{
+    const id=a.getAttribute('href').substring(1);
+    const target=document.getElementById(id);
+    if(target){
+      evt.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 70;
+      window.scrollTo({top,behavior:'smooth'});
+      navMenu.classList.remove('is-open');
+      navToggle?.setAttribute('aria-expanded','false');
+    }
+  });
 });
