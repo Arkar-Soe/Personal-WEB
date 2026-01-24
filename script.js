@@ -122,7 +122,10 @@ const lbCaption=document.getElementById('lightboxCaption');
 const lbClose=document.getElementById('lightboxClose');
 const lbPrev=document.getElementById('lightboxPrev');
 const lbNext=document.getElementById('lightboxNext');
-let galleryItems=[...document.querySelectorAll('.media-card a')];
+
+/* UPDATED SELECTOR HERE: Added .brand__logo-link */
+let galleryItems=[...document.querySelectorAll('.media-card a, .brand__logo-link')];
+
 let currentIndex=-1;
 galleryItems.forEach((link,i)=>{
   link.addEventListener('click',e=>{
