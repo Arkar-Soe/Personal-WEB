@@ -63,12 +63,18 @@
 
   <header class="site-header" role="banner">
     <div class="container flex-between wrap gap-m">
-      <div class="brand">
-        <a href="#top" class="brand__link">
-          <span class="brand__logo">PS</span>
+      <!-- UPDATED BRAND SECTION -->
+      <div class="brand" style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Logo: Click to View Image in Lightbox -->
+        <a href="assets/logo.png" class="brand__logo-link" data-type="image" data-caption="Profile Logo">
+          <img src="assets/logo.png" alt="Logo" class="brand__logo" style="object-fit: cover; padding: 0;">
+        </a>
+        <!-- Name: Click to Scroll to Top -->
+        <a href="#top" style="font-weight: 600;">
           <span class="brand__name">Phyo Arkar Soe</span>
         </a>
       </div>
+
       <nav class="nav" aria-label="Primary">
         <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
           <span class="nav__burger" aria-hidden="true"></span>
@@ -247,7 +253,6 @@
         </div>
 
         <div class="media-grid" id="mediaGrid" aria-live="polite">
-          <!-- Note: Images are placeholders based on previous version, you may want to update these captions or images to match new resume projects if available -->
           <figure class="media-card" data-category="elv">
             <a href="assets/media/cctv_rack_full.jpg" data-type="image" data-caption="CCTV rack configuration & cable management improvement.">
               <img src="assets/media/thumbs/cctv_rack_full.jpg" width="420" height="280" loading="lazy" alt="CCTV rack after organized cabling">
