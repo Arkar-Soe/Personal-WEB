@@ -53,6 +53,24 @@ p{margin-bottom:1rem}
 .accent{background:var(--gradient-accent);background-clip:text;-webkit-background-clip:text;color:transparent}
 .tagline{font-size:1.05rem;font-weight:500;color:var(--primary);margin:.6rem 0 1rem}
 
+/* --- ACCESSIBILITY (SKIP LINK) --- */
+.skip-link {
+  position: absolute;
+  top: -9999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  font-weight: 600;
+  border-radius: 0 0 6px 6px;
+  transition: top 0.3s ease;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* --- LAYOUT --- */
 .container{max-width:1140px;margin:0 auto;padding:0 1.25rem}
 .flex-between{display:flex;align-items:center;justify-content:space-between}
