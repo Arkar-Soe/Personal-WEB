@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d2733;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f141b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#818cf8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect fill="url(#bgGradient)" width="400" height="300" rx="8"/>
+  
+  <!-- Image icon - mountain/landscape -->
+  <rect x="155" y="100" width="90" height="70" rx="6" fill="none" stroke="url(#iconGradient)" stroke-width="3"/>
+  
+  <!-- Sun -->
+  <circle cx="225" cy="120" r="10" fill="url(#iconGradient)"/>
+  
+  <!-- Mountains -->
+  <polyline points="160,160 185,130 210,155 230,135 240,160" fill="none" stroke="url(#iconGradient)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  
+  <!-- Text -->
+  <text x="200" y="210" text-anchor="middle" fill="#9aa5b1" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">Image</text>
+  
+  <!-- Decorative lines -->
+  <line x1="120" y1="240" x2="280" y2="240" stroke="#273544" stroke-width="2" stroke-linecap="round"/>
+  <line x1="150" y1="255" x2="250" y2="255" stroke="#273544" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>
