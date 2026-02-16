@@ -19,7 +19,7 @@ const archiveData = [
     desc: "IoT device with custom acrylic chassis and Android control app. Features Arduino Nano + HC-05 for RGB lighting and scheduling.",
     tags: ["Arduino", "IoT", "MIT App Inventor"],
     media: [
-      { src: "https://res.cloudinary.com/dmdl2pdly/video/upload/v1771266371/NLHvod_swgmtf.mp4", caption: "Night Light Humidifier - Full Demo" },
+      { src: "AQbFqLnhJ_Y", caption: "Night Light Humidifier - Full Demo" },
       { src: "https://res.cloudinary.com/dmdl2pdly/image/upload/v1771263295/NLHimg1_ej8fhy.jpg", caption: "Completed Light Cube - Illuminated" },
       { src: "https://res.cloudinary.com/dmdl2pdly/image/upload/v1771263345/NLHimg2_uvtskn.jpg", caption: "Acrylic Chassis Assembly" },
       { src: "https://res.cloudinary.com/dmdl2pdly/image/upload/v1771263338/NLHimg3_s9eust.jpg", caption: "Internal Component Layout" },
